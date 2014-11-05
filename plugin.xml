@@ -1,0 +1,31 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+            id="com.driewielerdigital.cordova.plugin.DDService" version="0.2.3">
+        <name>DDService</name>
+        <description>Driewieler Digital Tea Plugin</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,admob</keywords>
+        <js-module src="www/dd_service.js" name="dd_service">
+            <clobbers target="dd_service" />
+        </js-module>
+        
+		<platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="DDService">
+                <param name="android-package" value="com.driewielerdigital.cordova.plugin.DDService"/>                                             
+            </feature>
+          
+        </config-file>
+
+   		<!-- Android Service setup -->       
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+				<service android:enabled="true" android:name="com.driewielerdigital.cordova.plugin.DDServiceNative" android:label="DDServiceNative" />
+				
+		</config-file>
+
+      	<source-file src="src/android/com/driewielerdigital/cordova/plugin/DDService.java" target-dir="src/com/driewielerdigital/cordova/plugin" />  
+      	<source-file src="src/android/com/driewielerdigital/cordova/plugin/DDServiceNative.java" target-dir="src/com/driewielerdigital/cordova/plugin" />        	
+    
+		</platform>    
+		
+    </plugin>
